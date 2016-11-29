@@ -1,0 +1,32 @@
+{
+  "name": "j.e.f.f",
+  "version": "1.0.0",
+  "description": "experimental instalation project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ./index.js",
+    "rebuild": "electron-rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexbern/JEFF.git"
+  },
+  "keywords": [
+    "experimantal",
+    "installation"
+  ],
+  "author": "Alex Bernard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexbern/JEFF/issues"
+  },
+  "homepage": "https://github.com/alexbern/JEFF#readme",
+  "dependencies": {
+    "electron": "^1.4.10",
+    "johnny-five": "^0.10.6"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.4.0"
+  }
+}
