@@ -6,9 +6,10 @@ class Menu{
 
     board.on('ready', () => {
       var sensor = new five.Sensor("A0");
-      sensor.on("change", function(value) {
-        if (value > 950) {
+      sensor.on("change", (value) => {
+        if (value > 580) {
           console.log('bal zit erop');
+          this.stuff();
         }else{
           console.log('bal is weg');
         }
