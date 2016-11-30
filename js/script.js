@@ -1,15 +1,17 @@
-// const five = require('johnny-five'),
-//   board = new five.Board();
-//
-// board.on('ready', () => {
-//   const led = new five.Led(10);
-//   let isOn = false;
-//   setInterval(() => {
-//     isOn = !isOn;
-//     if(isOn) led.on();
-//     else led.off();
-//   }, 1000);
-// });
+require('./johnny-five-init');
+
+const five = require('johnny-five'),
+  board = new five.Board();
+
+board.on('ready', () => {
+  const led = new five.Led(13);
+  let isOn = false;
+  setInterval(() => {
+    isOn = !isOn;
+    if(isOn) led.on();
+    else led.off();
+  }, 2000);
+});
 
 let game;
 
