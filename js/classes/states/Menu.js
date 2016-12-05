@@ -15,7 +15,6 @@ class Menu{
 
   }
   startGame(){
-    console.log('start the game');
     this.game.state.start('Play');
   }
 }
