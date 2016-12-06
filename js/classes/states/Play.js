@@ -1,3 +1,5 @@
+const sensorpoint = require('../../utils/sensorpoint');
+
 class Play{
   create(){
     this.initPlayers();
@@ -6,11 +8,12 @@ class Play{
     this.enableControls = 0;
     this.enableAwnser = 0;
     this.questionSounds = ['basketball', 'golf', 'football', 'tennis'];
-    this.activeSound;
+    this.activeSound = '';
+    this.p1score = 0;
+    this.p2score = 0;
     this.countdown();
   }
   startGame(){
-    console.log('Game Start');
     this.generateQuestion();
     this.enableControls = 1;
     this.enableAwnser = 1;
@@ -39,6 +42,10 @@ class Play{
     else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('golf', this.player2);
     }
+
+    // console.log(this.a0);
+
+
   }
   checkAwnser(a, p){
     if (a === this.activeSound) {
@@ -48,10 +55,14 @@ class Play{
   generateQuestion(){
     let rnd = Math.round(Math.random() * (this.questionSounds.length - 1));
     this.activeSound = this.questionSounds[rnd];
-    console.log(this.activeSound);
+    console.log('Sound that will be played: ' + this.activeSound);
   }
   scoreUp(player){
-    console.log(player);
+    if (player === this.player1) {
+      this.p1score++;
+    }else if(player === this.player2){
+      this.p2score++;
+    }
     player.x += 20;
     this.enableAwnser = 0;
     this.awnserCooldown();
@@ -71,6 +82,13 @@ class Play{
     this.key6 = this.game.input.keyboard.addKey(Phaser.Keyboard.SIX);
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
+
+    this.a0 = sensorpoint("A0", 700);
+    this.a1 = sensorpoint("A1", 700);
+    this.a2 = sensorpoint("A2", 700);
+    this.a3 = sensorpoint("A3", 700);
+    this.a4 = sensorpoint("A4", 700);
+    this.a5 = sensorpoint("A5", 700);
   }
   countdown(){
     let countdown = setInterval(()=>{
@@ -78,9 +96,6 @@ class Play{
         this.timerTime--;
       }else{
         this.startGame();
-        this.generateQuestion();
-        this.enableControls = 1;
-        this.enableAwnser = 1;
         clearInterval(countdown);
       }
     }, 1000);
@@ -88,6 +103,13 @@ class Play{
   awnserCooldown(){
     let cooldownTimer = 2;
     let cooldown = setInterval(()=>{
+
+      if (this.p1score === 10) {
+        this.winner(this.player1);
+      }else if(this.p2score === 10){
+        this.winner(this.player2);
+      }
+
       if (cooldownTimer > 0) {
         cooldownTimer--;
       }else{
@@ -95,7 +117,26 @@ class Play{
         this.generateQuestion();
         clearInterval(cooldown);
       }
+
     }, 1000)
+  }
+  winner(player){
+    if (player === this.player1) {
+      console.log('Player 1 has won');
+    }else if(player === this.player2){
+      console.log('Player 2 has won');
+    }
+  }
+  reset(){
+    this.initPlayers();
+    this.initControls();
+    this.timerTime = 3;
+    this.enableControls = 0;
+    this.enableAwnser = 0;
+    this.activeSound = '';
+    this.p1score = 0;
+    this.p2score = 0;
+    this.countdown();
   }
 }
 
