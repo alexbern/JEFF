@@ -18,9 +18,9 @@ class Play{
     console.log('GOOO');
     this.player1.animations.play('run', 12, true);
     this.player2.animations.play('run', 12, true);
-    this.trees.autoScroll(-80, 0);
-    this.bush1.autoScroll(-40, 0);
-    this.bush2.autoScroll(-90, 0);
+    this.trees.autoScroll(-60, 0);
+    this.bush1.autoScroll(-100, 0);
+    this.bush2.autoScroll(-40, 0);
     this.track.autoScroll(-100, 0);
     this.generateQuestion();
     this.enableControls = 1;
@@ -73,10 +73,11 @@ class Play{
     this.awnserCooldown();
   }
   initPlayers(){
-    this.player2 = this.game.add.sprite(100, window.innerHeight - 180, 'p1sheet');
+    this.player2 = this.game.add.sprite(100, window.innerHeight - 180, 'p2sheet');
     this.player2.anchor.setTo(0.5, 1);
     this.player2.animations.add('run');
-    this.player1 = this.game.add.sprite(100, window.innerHeight - 100, 'p1sheet');
+    this.player2.scale.setTo(0.8, 0.8);
+    this.player1 = this.game.add.sprite(100, window.innerHeight - 90, 'p1sheet');
     this.player1.anchor.setTo(0.5, 1);
     this.player1.animations.add('run');
   }
