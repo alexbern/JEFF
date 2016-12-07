@@ -2,6 +2,7 @@ const SensorPoint = require('../../utils/sensorpoint');
 
 class Play{
   create(){
+    this.initScene();
     this.initPlayers();
     this.initControls();
     this.timerTime = 3;
@@ -14,37 +15,42 @@ class Play{
     this.countdown();
   }
   startGame(){
+    console.log('GOOO');
+    this.player1.animations.play('run', 12, true);
+    this.player2.animations.play('run', 12, true);
+    this.trees.autoScroll(-80, 0);
+    this.bush1.autoScroll(-40, 0);
+    this.bush2.autoScroll(-90, 0);
+    this.track.autoScroll(-100, 0);
     this.generateQuestion();
     this.enableControls = 1;
     this.enableAwnser = 1;
   }
   update(){
-
-    if (this.key1.isDown && this.enableControls != 0 && this.enableAwnser != 0) {
+    if (this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
       this.checkAwnser('football', this.player1);
-    }else if(this.key2.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+    }else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('basketball', this.player1);
     }
-    else if(this.key3.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+    else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('tennis', this.player1);
     }
     else if(this.key4.isDown && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('golf', this.player1);
     }
-    else if(this.key5.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+    else if(this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('football', this.player2);
     }
-    else if(this.key6.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+    else if(this.a4.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('basketball', this.player2);
     }
-    else if(this.key7.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+    else if(this.a5.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('tennis', this.player2);
     }
     else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
       this.checkAwnser('golf', this.player2);
     }
 
-    console.log(this.a0.isOn);
   }
   checkAwnser(a, p){
     if (a === this.activeSound) {
@@ -67,10 +73,24 @@ class Play{
     this.awnserCooldown();
   }
   initPlayers(){
-    this.player1 = this.game.add.sprite(200, 200, 'sprite');
-    this.player1.anchor.setTo(0.5, 0.5);
-    this.player2 = this.game.add.sprite(200, 400, 'sprite');
-    this.player2.anchor.setTo(0.5, 0.5);
+    this.player2 = this.game.add.sprite(100, window.innerHeight - 180, 'p1sheet');
+    this.player2.anchor.setTo(0.5, 1);
+    this.player2.animations.add('run');
+    this.player1 = this.game.add.sprite(100, window.innerHeight - 100, 'p1sheet');
+    this.player1.anchor.setTo(0.5, 1);
+    this.player1.animations.add('run');
+  }
+  initScene(){
+    this.stage.backgroundColor = "#B5CEE7";
+    this.air = this.game.add.tileSprite(0, 0, window.innerWidth, 357, 'air');
+    this.bush2 = this.game.add.tileSprite(0, window.innerHeight - 260, window.innerWidth, 86, 'bush2');
+    this.bush2.anchor.setTo(0, 1);
+    this.trees = this.game.add.tileSprite(0, window.innerHeight - 260, window.innerWidth, 332, 'trees');
+    this.trees.anchor.setTo(0, 1);
+    this.track = this.game.add.tileSprite(0, window.innerHeight - 35, window.innerWidth, 225, 'track');
+    this.track.anchor.setTo(0, 1);
+    this.bush1 = this.game.add.tileSprite(0, window.innerHeight, window.innerWidth, 96, 'bush1');
+    this.bush1.anchor.setTo(0, 1);
   }
   initControls(){
     let light = 700;
