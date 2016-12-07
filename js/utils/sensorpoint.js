@@ -1,17 +1,17 @@
 const five = require('johnny-five');
 
-module.exports = (pin, sens) => {
+class SensorPoint {
+  constructor(pin, threshold) {
+    this.isOn = false;
 
-  var sensor = new five.Sensor(pin);
-
-  sensor.on("change", (value) => {
-    if (value > sens) {
-      console.log(pin + ' is active with sensitivity of ' + sens);
-      return 1;
-    }else{
-      console.log(pin + ' is unactive with sensitivity of ' + sens);
-      return 0;
-    }
-  });
-
+    new five.Sensor(pin).on('change', (value) => {
+      if (value > threshold){
+        this.isOn = false;
+      } else{
+        this.isOn = true;
+      }
+    });
+  }
 };
+
+module.exports = SensorPoint;
