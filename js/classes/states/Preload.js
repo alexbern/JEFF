@@ -7,6 +7,7 @@ class Preload{
     this.load.spritesheet('p1sheet', 'assets/sprites/p1spritesheet.png', 200, 200, 12);
     this.load.spritesheet('p2sheet', 'assets/sprites/p2spritesheet.png', 200, 200, 12);
     this.load.image('track', 'assets/sprites/track.png');
+    this.load.image('clouds', 'assets/sprites/clouds.png');
     this.load.image('trees', 'assets/sprites/trees.png');
     this.load.image('bush1', 'assets/sprites/bush1.png');
     this.load.image('bush2', 'assets/sprites/bush2.png');

@@ -15,13 +15,14 @@ class Play{
     this.countdown();
   }
   startGame(){
-    console.log('GOOO');
+    console.log('Start the game');
     this.player1.animations.play('run', 12, true);
     this.player2.animations.play('run', 12, true);
     this.trees.autoScroll(-60, 0);
     this.bush1.autoScroll(-100, 0);
     this.bush2.autoScroll(-40, 0);
     this.track.autoScroll(-100, 0);
+    this.clouds.autoScroll(-100, 0);
     this.generateQuestion();
     this.enableControls = 1;
     this.enableAwnser = 1;
@@ -84,6 +85,7 @@ class Play{
   initScene(){
     this.stage.backgroundColor = "#B5CEE7";
     this.air = this.game.add.tileSprite(0, 0, window.innerWidth, 357, 'air');
+    this.clouds = this.game.add.tileSprite(0, 100, window.innerWidth, 190, 'clouds');
     this.bush2 = this.game.add.tileSprite(0, window.innerHeight - 260, window.innerWidth, 86, 'bush2');
     this.bush2.anchor.setTo(0, 1);
     this.trees = this.game.add.tileSprite(0, window.innerHeight - 260, window.innerWidth, 332, 'trees');
