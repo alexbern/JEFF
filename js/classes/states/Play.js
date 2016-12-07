@@ -1,4 +1,4 @@
-const sensorpoint = require('../../utils/sensorpoint');
+const SensorPoint = require('../../utils/sensorpoint');
 
 class Play{
   create(){
@@ -19,6 +19,7 @@ class Play{
     this.enableAwnser = 1;
   }
   update(){
+
     if (this.key1.isDown && this.enableControls != 0 && this.enableAwnser != 0) {
       this.checkAwnser('football', this.player1);
     }else if(this.key2.isDown && this.enableControls != 0 && this.enableAwnser != 0){
@@ -43,9 +44,7 @@ class Play{
       this.checkAwnser('golf', this.player2);
     }
 
-    // console.log(this.a0);
-
-
+    console.log(this.a0.isOn);
   }
   checkAwnser(a, p){
     if (a === this.activeSound) {
@@ -74,6 +73,8 @@ class Play{
     this.player2.anchor.setTo(0.5, 0.5);
   }
   initControls(){
+    let light = 700;
+
     this.key1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
     this.key2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
     this.key3 = this.game.input.keyboard.addKey(Phaser.Keyboard.THREE);
@@ -83,12 +84,12 @@ class Play{
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
 
-    this.a0 = sensorpoint("A0", 700);
-    this.a1 = sensorpoint("A1", 700);
-    this.a2 = sensorpoint("A2", 700);
-    this.a3 = sensorpoint("A3", 700);
-    this.a4 = sensorpoint("A4", 700);
-    this.a5 = sensorpoint("A5", 700);
+    this.a0 = new SensorPoint("A0", light);
+    this.a1 = new SensorPoint("A1", light);
+    this.a2 = new SensorPoint("A2", light);
+    this.a3 = new SensorPoint("A3", light);
+    this.a4 = new SensorPoint("A4", light);
+    this.a5 = new SensorPoint("A5", light);
   }
   countdown(){
     let countdown = setInterval(()=>{
