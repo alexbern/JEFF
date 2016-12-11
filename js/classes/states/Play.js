@@ -28,29 +28,34 @@ class Play{
     this.enableAwnser = 1;
   }
   update(){
+
     if (this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
       this.checkAwnser('football', this.player1);
-    }else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-      this.checkAwnser('basketball', this.player1);
     }
-    else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-      this.checkAwnser('tennis', this.player1);
-    }
-    else if(this.key4.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-      this.checkAwnser('golf', this.player1);
-    }
-    else if(this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-      this.checkAwnser('football', this.player2);
-    }
-    else if(this.a4.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-      this.checkAwnser('basketball', this.player2);
-    }
-    else if(this.a5.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-      this.checkAwnser('tennis', this.player2);
-    }
-    else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-      this.checkAwnser('golf', this.player2);
-    }
+
+    // }else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+    //   this.checkAwnser('basketball', this.player1);
+    // }
+    // else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+    //   this.checkAwnser('tennis', this.player1);
+    // }
+    // else if(this.key4.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+    //   this.checkAwnser('golf', this.player1);
+    // }
+    // else if(this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+    //   this.checkAwnser('football', this.player2);
+    // }
+    // else if(this.a4.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+    //   this.checkAwnser('basketball', this.player2);
+    // }
+    // else if(this.a5.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+    //   this.checkAwnser('tennis', this.player2);
+    // }
+    // else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+    //   this.checkAwnser('golf', this.player2);
+    // }
+
+    // console.log(this.a0.isOn);
 
   }
   checkAwnser(a, p){
@@ -108,11 +113,11 @@ class Play{
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
 
     this.a0 = new SensorPoint("A0", light);
-    this.a1 = new SensorPoint("A1", light);
-    this.a2 = new SensorPoint("A2", light);
-    this.a3 = new SensorPoint("A3", light);
-    this.a4 = new SensorPoint("A4", light);
-    this.a5 = new SensorPoint("A5", light);
+    // this.a1 = new SensorPoint("A1", light);
+    // this.a2 = new SensorPoint("A2", light);
+    // this.a3 = new SensorPoint("A3", light);
+    // this.a4 = new SensorPoint("A4", light);
+    // this.a5 = new SensorPoint("A5", light);
   }
   countdown(){
     let countdown = setInterval(()=>{
