@@ -14,6 +14,7 @@ class Play{
     this.p2score = 0;
     this.countdown();
   }
+
   startGame(){
     console.log('Start the game');
     this.player1.animations.play('run', 12, true);
@@ -28,11 +29,8 @@ class Play{
     this.enableAwnser = 1;
   }
   update(){
-
-    if (this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
-      this.checkAwnser('football', this.player1);
-    }
-
+    // if (this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
+    //   this.checkAwnser('football', this.player1);
     // }else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
     //   this.checkAwnser('basketball', this.player1);
     // }
@@ -55,7 +53,9 @@ class Play{
     //   this.checkAwnser('golf', this.player2);
     // }
 
-    // console.log(this.a0.isOn);
+    if (this.a0) {
+      console.log(this.a0.isOn);
+    }
 
   }
   checkAwnser(a, p){
@@ -112,7 +112,8 @@ class Play{
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
 
-    this.a0 = new SensorPoint("A0", light);
+    this.a0 = new SensorPoint("A0", light, 'B');
+
     // this.a1 = new SensorPoint("A1", light);
     // this.a2 = new SensorPoint("A2", light);
     // this.a3 = new SensorPoint("A3", light);
@@ -120,10 +121,13 @@ class Play{
     // this.a5 = new SensorPoint("A5", light);
   }
   countdown(){
+
     let countdown = setInterval(()=>{
+      // this.countdownimage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 - 100,'countdown',0);
       if (this.timerTime > 0) {
         this.timerTime--;
       }else{
+        // this.countdownimage.destroy();
         this.startGame();
         clearInterval(countdown);
       }

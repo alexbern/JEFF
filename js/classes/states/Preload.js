@@ -1,5 +1,11 @@
+const ports = [
+  { id: "A", port: "/dev/cu.wchusbserial1410" },
+  { id: "B", port: "/dev/cu.wchusbserial1420" }
+];
+
 const five = require('johnny-five');
-const board = new five.Board();
+const boards = new five.Boards(ports);
+window.jeffApp.boards = boards;
 
 class Preload{
   preload(){
@@ -12,10 +18,16 @@ class Preload{
     this.load.image('bush1', 'assets/sprites/bush1.png');
     this.load.image('bush2', 'assets/sprites/bush2.png');
     this.load.image('air', 'assets/sprites/air.png');
-    board.on('ready', () => {
-      console.log('Board is ready');
+    this.load.spritesheet('logo', 'assets/sprites/logospritesheet.png', 739, 200, 4);
+    this.load.spritesheet('countdown', 'assets/sprites/countdownspritesheet.png', 400, 200, 4);
+    this.load.image('menuclouds', 'assets/sprites/menuclouds.png');
+
+    boards.on('ready', () => {
+      console.log('Boards are ready to use');
       this.onLoadComplete();
     });
+
+    // this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
   }
   onLoadComplete(){
     this.game.state.start('Menu');
