@@ -1,8 +1,37 @@
 class Menu{
   preload(){
     this.initScene()
-    this.key1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-    this.key1.onDown.add(this.startGame, this);
+    //this.key1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+    //this.key1.onDown.add(this.startGame, this);
+  }
+
+  update(){
+    /////////////////
+    // TODO MET JUISTE INPUTS
+    /////////////////
+
+    var p1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+    var p2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+
+    if(p1.isDown){
+      this.player1.frame = 1;
+    }else{
+      this.player1.frame = 0;
+    }
+
+    if(p2.isDown){
+      this.player2.frame = 1;
+    }else{
+      this.player2.frame = 0;
+    }
+
+    if (p1.isDown && p2.isDown) {
+      let countdown = setInterval(()=>{
+        //LOADER TOEVOEGEN?
+        this.startGame();
+      }, 800);
+    }
+
   }
   initScene(){
     this.stage.backgroundColor = "#B5CEE7";
@@ -28,6 +57,7 @@ class Menu{
     this.game.add.tween(this.menuclouds).to({y:155}, 1500, Phaser.Easing.Linear.NONE, true, 0, 2000, true);
     this.startText = this.game.add.text(window.innerWidth/2, window.innerHeight/2 - 80, 'Til beide voetballen op om het spel te starten', { font: '25px Calibri', fill: '#ffffff', align: 'center' });
     this.startText.anchor.setTo(0.5, 0.5);
+
     // this.menuclouds = this.game.add.tileSprite(window.innerWidth/2 - 600, window.innerHeight/2 - 350, 1144, 301, 'menuclouds');
     // this.game.add.tween(this.menuclouds).to({y:205}, 1500, Phaser.Easing.Linear.NONE, true, 0, 2000, true);
     // this.startText = this.game.add.text(window.innerWidth/2, window.innerHeight/2, 'Til beide voetballen op om het spel te starten', { font: '25px Coves', fill: '#ffffff', align: 'center' });

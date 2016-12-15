@@ -36,12 +36,12 @@ class Preload{
     //   console.log('Boards are ready to use');
     //   this.onLoadComplete();
     // });
-    this.onLoadComplete();
+    //this.onLoadComplete();
 
-    // this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+    this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
   }
   onLoadComplete(){
-    this.game.state.start('Gameover');
+    this.game.state.start('Menu');
   }
 }
 
