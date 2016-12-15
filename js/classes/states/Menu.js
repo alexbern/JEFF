@@ -28,6 +28,10 @@ class Menu{
     this.game.add.tween(this.menuclouds).to({y:155}, 1500, Phaser.Easing.Linear.NONE, true, 0, 2000, true);
     this.startText = this.game.add.text(window.innerWidth/2, window.innerHeight/2 - 80, 'Til beide voetballen op om het spel te starten', { font: '25px Calibri', fill: '#ffffff', align: 'center' });
     this.startText.anchor.setTo(0.5, 0.5);
+    // this.menuclouds = this.game.add.tileSprite(window.innerWidth/2 - 600, window.innerHeight/2 - 350, 1144, 301, 'menuclouds');
+    // this.game.add.tween(this.menuclouds).to({y:205}, 1500, Phaser.Easing.Linear.NONE, true, 0, 2000, true);
+    // this.startText = this.game.add.text(window.innerWidth/2, window.innerHeight/2, 'Til beide voetballen op om het spel te starten', { font: '25px Coves', fill: '#ffffff', align: 'center' });
+    // this.startText.anchor.setTo(0.5, 0.5);
     //this.game.add.tween(this.startText.scale).to( { x: 1.2, y: 1.2 }, 2000, Phaser.Easing.Linear.NONE, true, 0, 500, true);
   }
   startGame(){

@@ -1,4 +1,8 @@
 require('../vendors/johnny-five-init');
+
+window.jeffApp = {};
+
+
 const Preload = require('./classes/states/Preload');
 const Menu = require('./classes/states/Menu');
 const Play = require('./classes/states/Play');

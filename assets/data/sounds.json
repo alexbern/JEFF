@@ -1,0 +1,8 @@
+{
+  "sounds":[
+    {
+      "type": "basketball",
+      "url": "/assets/sounds/basket1.wav"
+    }
+  ]
+}
