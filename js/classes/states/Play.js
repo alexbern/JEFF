@@ -5,18 +5,43 @@ class Play{
     this.initScene();
     this.initPlayers();
     this.initControls();
+
     this.timerTime = 3;
+
     this.enableControls = 0;
     this.enableAwnser = 0;
     this.questionSounds = ['basketball', 'golf', 'football', 'tennis'];
     this.activeSound = '';
+
     this.p1score = 0;
     this.p2score = 0;
+
     this.countdown();
   }
 
+  countdown(){
+    let countdown = setInterval(()=>{
+      if (this.timerTime > 2) {
+        this.countdownimage = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2,'countdown',0);
+        this.countdownimage.anchor.setTo(0.5, 0.5);
+      }
+      if (this.timerTime == 2) {
+        this.countdownimage.frame = 1;
+      }
+      if (this.timerTime == 1) {
+        this.countdownimage.frame = 2;
+      }
+      if (this.timerTime > 0) {
+        this.timerTime--;
+      }else{
+        this.countdownimage.kill();
+        clearInterval(countdown);
+        this.startGame();
+      }
+    }, 1000);
+  }
+
   startGame(){
-    console.log('Start the game');
     this.player1.animations.play('run', 12, true);
     this.player2.animations.play('run', 12, true);
     this.trees.autoScroll(-60, 0);
@@ -53,10 +78,6 @@ class Play{
     //   this.checkAwnser('golf', this.player2);
     // }
 
-    if (this.a0) {
-      console.log(this.a0.isOn);
-    }
-
   }
   checkAwnser(a, p){
     if (a === this.activeSound) {
@@ -83,12 +104,14 @@ class Play{
     this.player2.anchor.setTo(0.5, 1);
     this.player2.animations.add('run');
     this.player2.scale.setTo(0.8, 0.8);
+
     this.player1 = this.game.add.sprite(100, window.innerHeight - 90, 'p1sheet');
     this.player1.anchor.setTo(0.5, 1);
     this.player1.animations.add('run');
   }
   initScene(){
     this.stage.backgroundColor = "#B5CEE7";
+
     this.air = this.game.add.tileSprite(0, 0, window.innerWidth, 357, 'air');
     this.clouds = this.game.add.tileSprite(0, 100, window.innerWidth, 190, 'clouds');
     this.bush2 = this.game.add.tileSprite(0, window.innerHeight - 260, window.innerWidth, 86, 'bush2');
@@ -111,28 +134,8 @@ class Play{
     this.key6 = this.game.input.keyboard.addKey(Phaser.Keyboard.SIX);
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
-
-    //this.a0 = new SensorPoint("A0", light, 'B');
-
-    // this.a1 = new SensorPoint("A1", light);
-    // this.a2 = new SensorPoint("A2", light);
-    // this.a3 = new SensorPoint("A3", light);
-    // this.a4 = new SensorPoint("A4", light);
-    // this.a5 = new SensorPoint("A5", light);
   }
-  countdown(){
 
-    let countdown = setInterval(()=>{
-      // this.countdownimage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 - 100,'countdown',0);
-      if (this.timerTime > 0) {
-        this.timerTime--;
-      }else{
-        // this.countdownimage.destroy();
-        this.startGame();
-        clearInterval(countdown);
-      }
-    }, 1000);
-  }
   awnserCooldown(){
     let cooldownTimer = 2;
     let cooldown = setInterval(()=>{
