@@ -1,4 +1,4 @@
-const SensorPoint = require('../../utils/sensorpoint');
+//const SensorPoint = require('../../utils/sensorpoint');
 
 class Play{
   create(){
@@ -112,7 +112,7 @@ class Play{
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
 
-    this.a0 = new SensorPoint("A0", light, 'B');
+    //this.a0 = new SensorPoint("A0", light, 'B');
 
     // this.a1 = new SensorPoint("A1", light);
     // this.a2 = new SensorPoint("A2", light);

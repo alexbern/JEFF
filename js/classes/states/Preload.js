@@ -41,7 +41,7 @@ class Preload{
     // this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
   }
   onLoadComplete(){
-    this.game.state.start('Menu');
+    this.game.state.start('Gameover');
   }
 }
 
