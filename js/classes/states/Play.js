@@ -6,6 +6,9 @@ class Play{
     this.initPlayers();
     this.initControls();
 
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    this.game.physics.arcade.gravity.y = 800;
+
     this.timerTime = 3;
 
     this.enableControls = 0;
@@ -97,15 +100,17 @@ class Play{
     }
 
   }
+
   checkAwnser(a, p){
     if (a === this.activeSound) {
         this.scoreUp(p);
-
+        this.generateBall(this.activeSound);
         this.speaker.kill();
         this.enableAwnser = 0;
         this.awnserCooldown();
     }
   }
+
   generateQuestion(){
     let rnd = Math.round(Math.random() * (this.questionSounds.length - 1));
     this.activeSound = this.questionSounds[rnd];
@@ -116,6 +121,46 @@ class Play{
     this.add.tween(this.speaker.scale).to({x: 0.7, y:0.7}, 300, "Linear", true, 0, 1000, true);
     this.enableAwnser = 1;
   }
+
+  generateBall(sound){
+    let xVelo = this.game.rnd.integerInRange(600, 800);
+    let yVelo = this.game.rnd.integerInRange(-600, -800);
+
+    console.log(xVelo, yVelo);
+
+    if (sound === 'basketball') {
+      this.ball = this.game.add.sprite(100 , window.innerHeight + 50, 'basketbal');
+      this.ball.scale.setTo(0.5, 0.5);
+      this.game.physics.arcade.enable(this.ball);
+      this.ball.body.velocity.x += xVelo;
+      this.ball.body.velocity.y = yVelo;
+    }
+
+    if (sound === 'baseball') {
+      this.ball = this.game.add.sprite(100 , window.innerHeight + 50, 'honkbal');
+      this.ball.scale.setTo(0.5, 0.5);
+      this.game.physics.arcade.enable(this.ball);
+      this.ball.body.velocity.x += xVelo;
+      this.ball.body.velocity.y = yVelo;
+    }
+
+    if (sound === 'football') {
+      this.ball = this.game.add.sprite(100 , window.innerHeight + 50, 'voetbal');
+      this.ball.scale.setTo(0.5, 0.5);
+      this.game.physics.arcade.enable(this.ball);
+      this.ball.body.velocity.x += xVelo;
+      this.ball.body.velocity.y = yVelo;
+    }
+
+    if (sound === 'tennis') {
+      this.ball = this.game.add.sprite(100 , window.innerHeight + 50, 'tennisbal');
+      this.ball.scale.setTo(0.5, 0.5);
+      this.game.physics.arcade.enable(this.ball);
+      this.ball.body.velocity.x += xVelo;
+      this.ball.body.velocity.y = yVelo;
+    }
+  }
+
   scoreUp(player){
     if (player === this.player1) {
       this.encouragement(player);
@@ -245,6 +290,7 @@ class Play{
 
     }, 1000)
   }
+
   winner(player){
     if (player === this.player1) {
       console.log('Player 1 has won');
@@ -254,6 +300,7 @@ class Play{
       this.game.state.start('Gameover');
     }
   }
+
   reset(){
     this.initPlayers();
     this.initControls();
