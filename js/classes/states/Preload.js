@@ -31,6 +31,14 @@ class Preload{
     this.load.image('tennisbal', 'assets/sprites/tennisbal.png');
     this.load.image('speaker', 'assets/sprites/speaker.png');
 
+    this.load.image('p1e1', 'assets/sprites/p1_encouragement_1.png');
+    this.load.image('p1e2', 'assets/sprites/p1_encouragement_2.png');
+    this.load.image('p1e3', 'assets/sprites/p1_encouragement_3.png');
+
+    this.load.image('p2e1', 'assets/sprites/p2_encouragement_1.png');
+    this.load.image('p2e2', 'assets/sprites/p2_encouragement_2.png');
+    this.load.image('p2e3', 'assets/sprites/p2_encouragement_3.png');
+
     // boards.on('ready', () => {
     //   console.log('Boards are ready to use');
     //   this.onLoadComplete();

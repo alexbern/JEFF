@@ -1,8 +1,24 @@
 {
   "sounds":[
     {
-      "type": "basketball",
-      "url": "/assets/sounds/basket1.wav"
+      "type": "basket",
+      "name": "basket1",
+      "url": "/assets/sounds/basket1.mp3"
+    },
+    {
+      "type": "basket",
+      "name": "basket2",
+      "url": "/assets/sounds/basket2.mp3"
+    },
+    {
+      "type": "basket",
+      "name": "basket3",
+      "url": "/assets/sounds/basket3.mp3"
+    },
+    {
+      "type": "basket",
+      "name": "basket4",
+      "url": "/assets/sounds/basket4.mp3"
     }
   ]
 }
