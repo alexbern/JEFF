@@ -35,6 +35,9 @@ class Preload{
     this.load.image('honkbal', 'assets/sprites/honkbal.png');
     this.load.image('tennisbal', 'assets/sprites/tennisbal.png');
     this.load.image('speaker', 'assets/sprites/speaker.png');
+    this.load.image('yellowpoint', 'assets/sprites/yellowpoint.png');
+    this.load.image('bluepoint', 'assets/sprites/bluepoint.png');
+    this.load.image('mapping', 'assets/sprites/mapping.png')
 
     this.load.image('p1e1', 'assets/sprites/p1_encouragement_1.png');
     this.load.image('p1e2', 'assets/sprites/p1_encouragement_2.png');

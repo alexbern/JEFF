@@ -3,23 +3,6 @@
 class Play{
   preload(){
     this.soundJSON = this.cache.getJSON('soundData');
-
-    // this.basket1 = this.add.audio('basket1');
-    // this.basket2 = this.add.audio('basket2');
-    // this.basket3 = this.add.audio('basket3');
-    // this.basket4 = this.add.audio('basket4');
-    //
-    // this.football1 = this.add.audio('football1');
-    // this.football2 = this.add.audio('football2');
-    // this.football3 = this.add.audio('football3');
-    // this.football4 = this.add.audio('football4');
-    //
-    // this.tennis1 = this.add.audio('tennis1');
-    // this.tennis2 = this.add.audio('tennis2');
-    // this.tennis3 = this.add.audio('tennis3');
-    // this.tennis4 = this.add.audio('tennis4');
-
-    this.baseball1 = this.add.audio('baseball1');
   }
   create(){
 
@@ -76,6 +59,19 @@ class Play{
 
     this.player1.animations.play('run', 12, true);
     this.player2.animations.play('run', 12, true);
+
+    this.mapping = this.game.add.sprite(window.innerWidth / 2, -200, 'mapping');
+    this.mapping.anchor.setTo(0.5, 0);
+
+    this.yellowpoint = this.game.add.sprite(window.innerWidth / 2 - (275/2) + 5, -150, 'yellowpoint');
+    this.yellowpoint.anchor.setTo(0.5, 0.5);
+
+    this.bluepoint = this.game.add.sprite(window.innerWidth / 2 - (275/2) + 5, -105, 'bluepoint');
+    this.bluepoint.anchor.setTo(0.5, 0.5);
+
+    this.add.tween(this.mapping).to({y: (-20)}, 1000, "Linear", true);
+    this.add.tween(this.yellowpoint).to({y: (30)}, 1000, "Linear", true);
+    this.add.tween(this.bluepoint).to({y: (75)}, 1000, "Linear", true);
 
     this.trees.autoScroll(-90, 0);
     this.bush1.autoScroll(-150, 0);
@@ -189,6 +185,7 @@ class Play{
     if (player === this.player1) {
       this.encouragement(player);
       this.p1score++;
+      this.updateMapping(player);
       if (this.p1score < 9) {
         this.add.tween(this.player1).to({x: (window.innerWidth / 10) * (this.p1score + 1)}, 1000, "Linear", true);
       }else{
@@ -197,11 +194,22 @@ class Play{
     }else if(player === this.player2){
       this.encouragement(player);
       this.p2score++;
+      this.updateMapping(player);
       if (this.p2score < 9) {
         this.add.tween(this.player2).to({x: (window.innerWidth / 10) * (this.p2score + 1)}, 1000, "Linear", true);
       }else{
 
       }
+    }
+  }
+
+  updateMapping(player){
+    if (player === this.player1) {
+      this.yellowpoint.x = (window.innerWidth / 2 - (275/2) + 5) + (275/10) * this.p1score;
+    }
+
+    if (player === this.player2) {
+      this.bluepoint.x = (window.innerWidth / 2 - (275/2) + 5) + (275/10) * this.p2score;
     }
   }
 
@@ -284,8 +292,10 @@ class Play{
 
       if (this.p1score === 10) {
         this.winner(this.player1);
+        clearInterval(cooldown);
       }else if(this.p2score === 10){
         this.winner(this.player2);
+        clearInterval(cooldown);
       }
 
       if (cooldownTimer == 3) {
@@ -314,12 +324,15 @@ class Play{
   }
 
   winner(player){
+
     if (player === this.player1) {
+      let winner = 'player1';
       console.log('Player 1 has won');
-      this.game.state.start('Gameover');
+      this.game.state.start('Gameover', true, false, winner);
     }else if(player === this.player2){
+      let winner = 'player2';
       console.log('Player 2 has won');
-      this.game.state.start('Gameover');
+      this.game.state.start('Gameover', true, false, winner);
     }
   }
 
