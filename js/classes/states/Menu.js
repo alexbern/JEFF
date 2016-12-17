@@ -1,6 +1,11 @@
 class Menu{
-  preload(){
+  create(){
+    this.counter = 0;
+
     this.initScene()
+
+    this.p1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+    this.p2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
   }
 
   update(){
@@ -8,23 +13,20 @@ class Menu{
     // TODO MET JUISTE INPUTS
     /////////////////
 
-    var p1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-    var p2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
-
-    if(p1.isDown){
+    if(this.p1.isDown){
       this.player1.frame = 1;
     }else{
       this.player1.frame = 0;
     }
 
-    if(p2.isDown){
+    if(this.p2.isDown){
       this.player2.frame = 1;
     }else{
       this.player2.frame = 0;
     }
 
-    if (p1.isDown && p2.isDown) {
-      this.startGame();
+    if (this.p1.isDown && this.p2.isDown) {
+      this.initStart();
     }
 
   }
@@ -58,6 +60,17 @@ class Menu{
     this.startText = this.game.add.text(window.innerWidth/2, window.innerHeight/2 - 80, 'Til beide voetballen op om het spel te starten', { font: '25px Calibri', fill: '#ffffff', align: 'center' });
     this.startText.anchor.setTo(0.5, 0.5);
 
+  }
+  initStart(){
+    if (this.counter === 0) {
+      this.counter++;
+      this.add.tween(this.logo).to({x: (-1000)}, 800, "Linear", true);
+      this.add.tween(this.startText).to({x: (-1000)}, 800, "Linear", true);
+      const interval = setInterval(()=>{
+        clearInterval(interval);
+        this.startGame();
+      }, 3000);
+    }
   }
   startGame(){
     this.game.state.start('Play');
