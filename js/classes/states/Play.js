@@ -1,7 +1,28 @@
 //const SensorPoint = require('../../utils/sensorpoint');
 
 class Play{
+  preload(){
+    this.soundJSON = this.cache.getJSON('soundData');
+
+    // this.basket1 = this.add.audio('basket1');
+    // this.basket2 = this.add.audio('basket2');
+    // this.basket3 = this.add.audio('basket3');
+    // this.basket4 = this.add.audio('basket4');
+    //
+    // this.football1 = this.add.audio('football1');
+    // this.football2 = this.add.audio('football2');
+    // this.football3 = this.add.audio('football3');
+    // this.football4 = this.add.audio('football4');
+    //
+    // this.tennis1 = this.add.audio('tennis1');
+    // this.tennis2 = this.add.audio('tennis2');
+    // this.tennis3 = this.add.audio('tennis3');
+    // this.tennis4 = this.add.audio('tennis4');
+
+    this.baseball1 = this.add.audio('baseball1');
+  }
   create(){
+
     this.initScene();
     this.initPlayers();
     this.initControls();
@@ -112,9 +133,13 @@ class Play{
   }
 
   generateQuestion(){
-    let rnd = Math.round(Math.random() * (this.questionSounds.length - 1));
-    this.activeSound = this.questionSounds[rnd];
-    console.log('Sound that will be played: ' + this.activeSound);
+    let rndarr = Math.round(Math.random() * this.soundJSON.sounds.length);
+    let sound = this.soundJSON.sounds[rndarr];
+    this.activeSound = sound.type;
+
+    this.player = this.add.audio(sound.name);
+    this.player.play();
+
     this.speaker = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'speaker');
     this.speaker.anchor.setTo(0.5, 0.5);
     this.speaker.scale.setTo(0.8, 0.8)
@@ -125,8 +150,6 @@ class Play{
   generateBall(sound){
     let xVelo = this.game.rnd.integerInRange(600, 800);
     let yVelo = this.game.rnd.integerInRange(-600, -800);
-
-    console.log(xVelo, yVelo);
 
     if (sound === 'basketball') {
       this.ball = this.game.add.sprite(100 , window.innerHeight + 50, 'basketbal');
@@ -162,6 +185,7 @@ class Play{
   }
 
   scoreUp(player){
+    this.player.stop();
     if (player === this.player1) {
       this.encouragement(player);
       this.p1score++;
@@ -179,8 +203,6 @@ class Play{
 
       }
     }
-
-
   }
 
   encouragement(player){

@@ -1,3 +1,6 @@
+require('es6-promise').polyfill();
+const fetch = require('isomorphic-fetch');
+
 const ports = [
   { id: "A", port: "/dev/cu.wchusbserial1410" },
   { id: "B", port: "/dev/cu.wchusbserial1420" }
@@ -9,6 +12,8 @@ const five = require('johnny-five');
 
 class Preload{
   preload(){
+    this.load.json('soundData', 'assets/data/sounds.json');
+
     this.load.spritesheet('p1sheet', 'assets/sprites/p1spritesheet.png', 200, 200, 12);
     this.load.spritesheet('p2sheet', 'assets/sprites/p2spritesheet.png', 200, 200, 12);
     this.load.spritesheet('p1ballsheet', 'assets/sprites/p1ballspritesheet.png', 132, 300, 2);
@@ -38,6 +43,23 @@ class Preload{
     this.load.image('p2e1', 'assets/sprites/p2_encouragement_1.png');
     this.load.image('p2e2', 'assets/sprites/p2_encouragement_2.png');
     this.load.image('p2e3', 'assets/sprites/p2_encouragement_3.png');
+
+    this.load.audio('basket1', 'assets/sounds/basket1.mp3');
+    this.load.audio('basket2', 'assets/sounds/basket2.mp3');
+    this.load.audio('basket3', 'assets/sounds/basket3.mp3');
+    this.load.audio('basket4', 'assets/sounds/basket4.mp3');
+
+    this.load.audio('football1', 'assets/sounds/football1.mp3');
+    this.load.audio('football2', 'assets/sounds/football2.mp3');
+    this.load.audio('football3', 'assets/sounds/football3.mp3');
+    this.load.audio('football4', 'assets/sounds/football4.mp3');
+
+    this.load.audio('tennis1', 'assets/sounds/tennis1.mp3');
+    this.load.audio('tennis2', 'assets/sounds/tennis2.mp3');
+    this.load.audio('tennis3', 'assets/sounds/tennis3.mp3');
+    this.load.audio('tennis4', 'assets/sounds/tennis4.mp3');
+
+    this.load.audio('baseball1', 'assets/sounds/baseball1.mp3');
 
     // boards.on('ready', () => {
     //   console.log('Boards are ready to use');
