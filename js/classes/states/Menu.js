@@ -1,32 +1,46 @@
+const SensorPoint = require('../../utils/sensorpoint');
+
 class Menu{
   create(){
     this.counter = 0;
+    this.secondcount = 0;
 
     this.initScene()
 
     this.p1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
     this.p2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+
+    this.a3 = new SensorPoint('A3', 1015, 'A');
+    this.b0 = new SensorPoint('A0', 1015, 'B');
+
   }
 
   update(){
-    /////////////////
-    // TODO MET JUISTE INPUTS
-    /////////////////
 
-    if(this.p1.isDown){
-      this.player1.frame = 1;
+    if (this.secondcount >= 50) {
+
+      if(this.a3.isOn){
+        this.player1.frame = 1;
+      }else{
+        this.player1.frame = 0;
+      }
+
+      if(this.b0.isOn){
+        this.player2.frame = 1;
+      }else{
+        this.player2.frame = 0;
+      }
+
+      if (this.a3.isOn && this.b0.isOn) {
+        this.initStart();
+      }
+
+      // if (this.p1.isDown && this.p2.isDown) {
+      //   this.initStart();
+      // }
+
     }else{
-      this.player1.frame = 0;
-    }
-
-    if(this.p2.isDown){
-      this.player2.frame = 1;
-    }else{
-      this.player2.frame = 0;
-    }
-
-    if (this.p1.isDown && this.p2.isDown) {
-      this.initStart();
+      this.secondcount++;
     }
 
   }

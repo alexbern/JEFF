@@ -2,13 +2,13 @@ require('es6-promise').polyfill();
 const fetch = require('isomorphic-fetch');
 
 const ports = [
-  { id: "A", port: "/dev/cu.wchusbserial1410" },
-  { id: "B", port: "/dev/cu.wchusbserial1420" }
+  { id: "B", port: "/dev/cu.wchusbserial1410" },
+  { id: "A", port: "/dev/cu.wchusbserial1420" }
 ];
 
 const five = require('johnny-five');
-//const boards = new five.Boards(ports);
-//window.jeffApp.boards = boards;
+const boards = new five.Boards(ports);
+window.jeffApp.boards = boards;
 
 class Preload{
   preload(){
@@ -37,7 +37,12 @@ class Preload{
     this.load.image('speaker', 'assets/sprites/speaker.png');
     this.load.image('yellowpoint', 'assets/sprites/yellowpoint.png');
     this.load.image('bluepoint', 'assets/sprites/bluepoint.png');
-    this.load.image('mapping', 'assets/sprites/mapping.png')
+    this.load.image('mapping', 'assets/sprites/mapping.png');
+
+    this.load.image('footballsensor', 'assets/sprites/voetbalsensor.png');
+    this.load.image('tennissensor', 'assets/sprites/tennisballsensor.png');
+    this.load.image('baseballsensor', 'assets/sprites/baseballsensor.png');
+    this.load.image('basketballsensor', 'assets/sprites/basketsensor.png');
 
     this.load.image('p1e1', 'assets/sprites/p1_encouragement_1.png');
     this.load.image('p1e2', 'assets/sprites/p1_encouragement_2.png');
@@ -64,13 +69,13 @@ class Preload{
 
     this.load.audio('baseball1', 'assets/sounds/baseball1.mp3');
 
-    // boards.on('ready', () => {
-    //   console.log('Boards are ready to use');
-    //   this.onLoadComplete();
-    // });
-    //this.onLoadComplete();
+    boards.on('ready', () => {
+      console.log('Boards are ready to use');
+      this.onLoadComplete();
+    });
 
-    this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+
+    // this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
   }
   onLoadComplete(){
     this.game.state.start('Menu');

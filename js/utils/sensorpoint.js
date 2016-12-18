@@ -18,3 +18,4 @@ class SensorPoint {
 };
 
 module.exports = SensorPoint;
+//

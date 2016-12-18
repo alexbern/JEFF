@@ -18,7 +18,7 @@ class Gameover{
     if (this.winner === 'player1') {
       this.stage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 + 20, 'p1stage');
     }else{
-      this.stage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 + 20, 'p2stage');
+      this.stage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 + 20, 'p1stage');
     }
 
 
@@ -41,17 +41,17 @@ class Gameover{
     this.menuclouds = this.game.add.tileSprite(window.innerWidth/2 - 500, window.innerHeight/2 - 400, 1144, 301, 'menuclouds');
     this.menuclouds.autoScroll(-10, 0);
 
-    let counter = 0;
-
-    let interval = setInterval(()=>{
-      if (counter < 10) {
-        counter++;
-      }else{
-        console.log('restart the fucking game');
-        clearInterval(interval);
-        this.game.state.start('Preload');
-      }
-    }, 1000);
+    // let counter = 0;
+    //
+    // let interval = setInterval(()=>{
+    //   if (counter < 10) {
+    //     counter++;
+    //   }else{
+    //     console.log('restart the fucking game');
+    //     clearInterval(interval);
+    //     this.game.state.start('Preload');
+    //   }
+    // }, 1000);
 
 
     //this.game.add.tween(this.startText.scale).to( { x: 1.2, y: 1.2 }, 2000, Phaser.Easing.Linear.NONE, true, 0, 500, true);
