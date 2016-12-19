@@ -1,0 +1,69 @@
+{
+  "sounds":[
+    {
+      "type": "basketball",
+      "name": "basket1",
+      "url": "/assets/sounds/basket1.mp3"
+    },
+    {
+      "type": "basketball",
+      "name": "basket2",
+      "url": "/assets/sounds/basket2.mp3"
+    },
+    {
+      "type": "basketball",
+      "name": "basket3",
+      "url": "/assets/sounds/basket3.mp3"
+    },
+    {
+      "type": "basketball",
+      "name": "basket4",
+      "url": "/assets/sounds/basket4.mp3"
+    },
+    {
+      "type": "football",
+      "name": "football1",
+      "url": "/assets/sounds/football1.mp3"
+    },
+    {
+      "type": "football",
+      "name": "football2",
+      "url": "/assets/sounds/football2.mp3"
+    },
+    {
+      "type": "football",
+      "name": "football3",
+      "url": "/assets/sounds/football3.mp3"
+    },
+    {
+      "type": "football",
+      "name": "football4",
+      "url": "/assets/sounds/football4.mp3"
+    },
+    {
+      "type": "tennis",
+      "name": "tennis1",
+      "url": "/assets/sounds/tennis1.mp3"
+    },
+    {
+      "type": "tennis",
+      "name": "tennis2",
+      "url": "/assets/sounds/tennis2.mp3"
+    },
+    {
+      "type": "tennis",
+      "name": "tennis3",
+      "url": "/assets/sounds/tennis3.mp3"
+    },
+    {
+      "type": "tennis",
+      "name": "tennis4",
+      "url": "/assets/sounds/tennis4.mp3"
+    },
+    {
+      "type": "baseball",
+      "name": "baseball1",
+      "url": "/assets/sounds/baseball1.mp3"
+    }
+  ]
+}

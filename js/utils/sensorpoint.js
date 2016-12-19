@@ -1,13 +1,16 @@
 const five = require('johnny-five');
 
 class SensorPoint {
-  constructor(pin, threshold) {
+  constructor(pin, threshold, boardId) {
+
+    const boards = window.jeffApp.boards;
+
     this.isOn = false;
 
-    new five.Sensor(pin).on('change', (value) => {
+    new five.Sensor({pin: pin, board: boards.byId(boardId)}).on('change', (value) => {
       if (value > threshold){
         this.isOn = false;
-      } else{
+      }else{
         this.isOn = true;
       }
     });
@@ -15,3 +18,4 @@ class SensorPoint {
 };
 
 module.exports = SensorPoint;
+//
