@@ -1,17 +1,25 @@
-const SensorPoint = require('../../utils/sensorpoint');
+// const SensorPoint = require('../../utils/sensorpoint');
 
 class Menu{
+  preload(){
+    this.readySound = this.add.audio('ready');
+    this.readySound2 = this.add.audio('ready2');
+    this.whooshSound = this.add.audio('whoosh');
+  }
   create(){
     this.counter = 0;
     this.secondcount = 0;
+
+    this.p1counter = 0;
+    this.p2counter = 0;
 
     this.initScene()
 
     this.p1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
     this.p2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
 
-    this.a3 = new SensorPoint('A3', 1015, 'A');
-    this.b0 = new SensorPoint('A0', 1015, 'B');
+    // this.a3 = new SensorPoint('A3', 1015, 'A');
+    // this.b0 = new SensorPoint('A0', 1015, 'B');
 
   }
 
@@ -19,25 +27,55 @@ class Menu{
 
     if (this.secondcount >= 50) {
 
-      if(this.a3.isOn){
-        this.player1.frame = 1;
-      }else{
-        this.player1.frame = 0;
-      }
-
-      if(this.b0.isOn){
-        this.player2.frame = 1;
-      }else{
-        this.player2.frame = 0;
-      }
-
-      if (this.a3.isOn && this.b0.isOn) {
-        this.initStart();
-      }
-
-      // if (this.p1.isDown && this.p2.isDown) {
+      // if(this.a3.isOn){
+      //   this.player1.frame = 1;
+      // }else{
+      //   this.player1.frame = 0;
+      // }
+      //
+      // if(this.b0.isOn){
+      //   this.player2.frame = 1;
+      // }else{
+      //   this.player2.frame = 0;
+      // }
+      //
+      // if (this.a3.isOn && this.b0.isOn) {
       //   this.initStart();
       // }
+
+      if(this.p1.isDown){
+        this.player1.frame = 1;
+        if (this.p1counter === 0) {
+          if (this.p2.isDown) {
+            this.readySound2.play();
+          }else{
+            this.readySound.play();
+          }
+          this.p1counter++;
+        }
+      }else{
+        this.player1.frame = 0;
+        this.p1counter = 0;
+      }
+
+      if(this.p2.isDown){
+        this.player2.frame = 1;
+        if (this.p2counter === 0) {
+          if (this.p1.isDown) {
+            this.readySound2.play();
+          }else{
+            this.readySound.play();
+          }
+          this.p2counter++;
+        }
+      }else{
+        this.player2.frame = 0;
+        this.p2counter = 0;
+      }
+
+      if (this.p1.isDown && this.p2.isDown) {
+        this.initStart();
+      }
 
     }else{
       this.secondcount++;
@@ -78,7 +116,7 @@ class Menu{
   initStart(){
     if (this.counter === 0) {
       this.counter++;
-      this.add.tween(this.logo).to({x: (-1000)}, 800, "Linear", true);
+      this.add.tween(this.logo).to({x: (-1000)}, 400, "Linear", true);
       this.add.tween(this.startText).to({x: (-1000)}, 800, "Linear", true);
       const interval = setInterval(()=>{
         clearInterval(interval);
