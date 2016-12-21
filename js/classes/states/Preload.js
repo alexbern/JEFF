@@ -18,7 +18,8 @@ class Preload{
     this.load.spritesheet('p2sheet', 'assets/sprites/p2spritesheet.png', 200, 200, 12);
     this.load.spritesheet('p1ballsheet', 'assets/sprites/p1ballspritesheet.png', 132, 300, 2);
     this.load.spritesheet('p2ballsheet', 'assets/sprites/p2ballspritesheet.png', 150, 300, 2);
-    this.load.spritesheet('p1stage', 'assets/sprites/p1stage.png', 400, 400, 3);
+    this.load.spritesheet('p1stage', 'assets/sprites/p1stage.png', 200, 200, 5);
+    this.load.spritesheet('p2stage', 'assets/sprites/p2stage.png', 200, 200, 5);
     this.load.image('track', 'assets/sprites/track.png');
     this.load.image('clouds', 'assets/sprites/clouds.png');
     this.load.image('trees', 'assets/sprites/trees.png');
@@ -79,6 +80,7 @@ class Preload{
     this.load.audio('error', 'assets/sounds/error.wav');
     this.load.audio('sound2', 'assets/sounds/sound2.wav');
     this.load.audio('gunshot', 'assets/sounds/gunshot.mp3');
+    this.load.audio('cheer', 'assets/sounds/crowd1.wav');
 
     this.load.audio('p2e1', 'assets/sounds/super_blauw.mp3');
     this.load.audio('p1e1', 'assets/sounds/super_geel.mp3');
@@ -87,10 +89,14 @@ class Preload{
     this.load.audio('p2e2', 'assets/sounds/goedzo_blauw.mp3');
     this.load.audio('p1e2', 'assets/sounds/goedzo_geel.mp3');
 
-    boards.on('ready', () => {
-      console.log('Boards are ready to use');
-      this.onLoadComplete();
-    });
+    this.player2 = this.game.add.sprite(- window.innerWidth / 10, window.innerHeight - 180, 'p2sheet');
+    this.player1 = this.game.add.sprite(- window.innerWidth / 10, window.innerHeight - 180, 'p1sheet');
+    // boards.on('ready', () => {
+    //   console.log('Boards are ready to use');
+    //   this.onLoadComplete();
+    // });
+
+    this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
   }
   onLoadComplete(){
     this.game.state.start('Menu');
