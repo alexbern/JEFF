@@ -1,4 +1,4 @@
-const SensorPoint = require('../../utils/sensorpoint');
+// const SensorPoint = require('../../utils/sensorpoint');
 
 class Play{
   preload(){
@@ -110,55 +110,56 @@ class Play{
   update(){
 
     if (this.sensorcount >= 50) {
-      console.log(this.b3.isOn);
-      if (this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
-        this.checkAwnser('football', this.player2);
-      }else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('basketball', this.player2);
-      }
-      else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('tennis', this.player2);
-      }
-      else if(this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('baseball', this.player2);
-      }
-      else if(this.b0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('football', this.player1);
-      }
-      else if(this.b1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('basketball', this.player1);
-      }
-      else if(this.b2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('tennis', this.player1);
-      }
-      else if(this.b3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('baseball', this.player1);
-      }
+
+      // if (this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
+      //   this.checkAwnser('football', this.player2);
+      // }else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      //   this.checkAwnser('basketball', this.player2);
+      // }
+      // else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      //   this.checkAwnser('tennis', this.player2);
+      // }
+      // else if(this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      //   this.checkAwnser('baseball', this.player2);
+      // }
+      // else if(this.b0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      //   this.checkAwnser('football', this.player1);
+      // }
+      // else if(this.b1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      //   this.checkAwnser('basketball', this.player1);
+      // }
+      // else if(this.b2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      //   this.checkAwnser('tennis', this.player1);
+      // }
+      // else if(this.b3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      //   this.checkAwnser('baseball', this.player1);
+      // }
 
       //keyboard controls
-    //   if (this.key1.isDown && this.enableControls != 0 && this.enableAwnser != 0) {
-    //     this.checkAwnser('football', this.player1);
-    //   }else if(this.key2.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-    //     this.checkAwnser('basketball', this.player1);
-    //   }
-    //   else if(this.key3.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-    //     this.checkAwnser('tennis', this.player1);
-    //   }
-    //   else if(this.key4.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-    //     this.checkAwnser('baseball', this.player1);
-    //   }
-    //   else if(this.key5.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-    //     this.checkAwnser('football', this.player2);
-    //   }
-    //   else if(this.key6.isDown&& this.enableControls != 0 && this.enableAwnser != 0){
-    //     this.checkAwnser('basketball', this.player2);
-    //   }
-    //   else if(this.key7.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-    //     this.checkAwnser('tennis', this.player2);
-    //   }
-    //   else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
-    //     this.checkAwnser('baseball', this.player2);
-    //   }
+      if (this.key1.isDown && this.enableControls != 0 && this.enableAwnser != 0) {
+        this.checkAwnser('football', this.player1);
+      }else if(this.key2.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('basketball', this.player1);
+      }
+      else if(this.key3.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('tennis', this.player1);
+      }
+      else if(this.key4.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('baseball', this.player1);
+      }
+      else if(this.key5.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('football', this.player2);
+      }
+      else if(this.key6.isDown&& this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('basketball', this.player2);
+      }
+      else if(this.key7.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('tennis', this.player2);
+      }
+      else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('baseball', this.player2);
+      }
+
     }else{
       this.sensorcount++;
     }
@@ -177,11 +178,19 @@ class Play{
   }
 
   keyboardCheck(){
-    if (this.key1.isDown || this.key2.isDown || this.key3.isDown || this.key4.isDown || this.key5.isDown || this.key6.isDown || this.key7.isDown || this.key8.isDown) {
-      return false;
-    }else{
-      return true;
+    if (this.key1.isDown || this.key5.isDown) {
+      return 'footballsensor';
     }
+    if (this.key2.isDown || this.key6.isDown) {
+      return 'basketballsensor';
+    }
+    if (this.key3.isDown || this.key7.isDown) {
+      return 'tennissensor';
+    }
+    if (this.key4.isDown || this.key8.isDown) {
+      return 'baseballsensor';
+    }
+    return false;
   }
 
   checkAwnser(a, p){
@@ -358,92 +367,83 @@ class Play{
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
 
-    this.a0 = new SensorPoint('A0', 1000, 'A');
-    this.a1 = new SensorPoint('A1', light, 'A');
-    this.a2 = new SensorPoint('A2', light, 'A');
-    this.a3 = new SensorPoint('A3', light, 'A');
-
-    this.b0 = new SensorPoint('A0', light, 'B');
-    this.b1 = new SensorPoint('A1', light, 'B');
-    this.b2 = new SensorPoint('A2', light, 'B');
-    this.b3 = new SensorPoint('A3', 1000, 'B');
+    // this.a0 = new SensorPoint('A0', 1000, 'A');
+    // this.a1 = new SensorPoint('A1', light, 'A');
+    // this.a2 = new SensorPoint('A2', light, 'A');
+    // this.a3 = new SensorPoint('A3', light, 'A');
+    //
+    // this.b0 = new SensorPoint('A0', light, 'B');
+    // this.b1 = new SensorPoint('A1', light, 'B');
+    // this.b2 = new SensorPoint('A2', light, 'B');
+    // this.b3 = new SensorPoint('A3', 1000, 'B');
   }
 
   awnserCooldown(){
     let cooldownTimer = 3;
 
-    let cooldown = setInterval(()=>{
+      let cooldown = setInterval(()=>{
 
-      const checksensors = this.keyboardCheck();
+        const checksensors = this.keyboardCheck();
+        console.log(checksensors);
 
-      if (this.p1score === 10) {
-        this.winner(this.player1);
-        clearInterval(cooldown);
-      }else if(this.p2score === 10){
-        this.winner(this.player2);
-        clearInterval(cooldown);
-      }
+        if (this.p1score === 10) {
+          this.winner(this.player1);
+          clearInterval(cooldown);
+        }else if(this.p2score === 10){
+          this.winner(this.player2);
+          clearInterval(cooldown);
+        }
 
-      if (cooldownTimer == 3) {
-        this.minicountdown = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2,'countdown',0);
-        this.minicountdown.anchor.setTo(0.5, 0.5);
-        this.minicountdown.scale.setTo(0.6, 0.6);
-        this.minicountdownSound.play();
-      }
+        if (cooldownTimer == 3) {
+          this.minicountdown = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2,'countdown',0);
+          this.minicountdown.anchor.setTo(0.5, 0.5);
+          this.minicountdown.scale.setTo(0.6, 0.6);
+          this.minicountdownSound.play();
+        }
 
-      if (cooldownTimer == 2) {
-        this.minicountdown.frame = 1;
-        this.minicountdownSound.play();
-      }
+        if (cooldownTimer == 2) {
+          this.minicountdown.frame = 1;
+          this.minicountdownSound.play();
+        }
 
-      if (cooldownTimer == 1) {
-        this.minicountdown.frame = 2;
-        this.minicountdownSound.play();
-      }
+        if (cooldownTimer == 1) {
+          this.minicountdown.frame = 2;
+          this.minicountdownSound.play();
+        }
 
-      if (cooldownTimer == 0) {
-        this.minicountdown.kill();
-      }
+        if (cooldownTimer == 0) {
+          this.minicountdown.kill();
+        }
 
-      if (cooldownTimer > 0 || checksensors === false) {
-        cooldownTimer--;
-        if (checksensors === false) {
-          if (this.key1.isDown || this.key5.isDown && cooldownTimer <= 0) {
-            this.sensorerror = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'footballsensor');
-            this.sensorerror.anchor.setTo(0.5, 0.5);
-            this.add.tween(this.sensorerror).to( { alpha: 0 }, 500, "Linear", true, 0, 1000, true);
+        if (cooldownTimer > 0 || checksensors) {
+          cooldownTimer--;
+
+          if (checksensors && cooldownTimer < 0) {
+            if (!this.sensorerror) {
+              this.sensorerror = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, checksensors);
+              this.sensorerror.anchor.setTo(0.5);
+              this.sensorerror.alpha = 1;
+              this.add.tween(this.sensorerror.scale).to( {x: 0.9, y: 0.9 }, 200, "Linear", true, 0, 1000, true);
+            }else{
+              this.sensorerror.loadTexture(checksensors);
+              this.sensorerror.alpha = 1;
+            }
+
           }
-          // if (this.a0.isOn || this.b3.isOn) {
-          //   this.sensorerror = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'baseballsensor');
-          //   this.sensorerror.anchor.setTo(0.5);
-          //   this.add.tween(this.sensorerror).to( { alpha: 0 }, 500, "Linear", true, 0, 1000, true);
-          // }
-          // if (this.a1.isOn || this.b2.isOn) {
-          //   this.sensorerror = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'tennissensor');
-          //   this.sensorerror.anchor.setTo(0.5);
-          //   this.add.tween(this.sensorerror).to( { alpha: 0 }, 500, "Linear", true, 0, 1000, true);
-          // }
-          // if (this.a2.isOn || this.b1.isOn) {
-          //   this.sensorerror = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'basketballsensor');
-          //   this.sensorerror.anchor.setTo(0.5);
-          //   this.add.tween(this.sensorerror).to( { alpha: 0 }, 500, "Linear", true, 0, 1000, true);
-          // }
-          // if (this.a3.isOn || this.b0.isOn) {
-          //   this.sensorerror = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'footballsensor');
-          //   this.sensorerror.anchor.setTo(0.5);
-          //   this.add.tween(this.sensorerror).to( { alpha: 0 }, 500, "Linear", true, 0, 1000, true);
-          // }
-        }
-      }else if(cooldownTimer <= 0 && checksensors === true){
-        if (this.sensorerror) {
-          this.sensorerror.kill();
-          this.sensorerror.destroy();
-        }
-        this.generateQuestion();
-        clearInterval(cooldown);
-      }
 
-    }, 1000)
+        }else if(cooldownTimer <= 0 && !checksensors){
+
+          if (this.sensorerror) {
+            this.sensorerror.alpha = 0;
+          }
+          this.generateQuestion();
+          clearInterval(cooldown);
+        }
+      }, 1000)
+
+
+
+
   }
 
   winner(player){
