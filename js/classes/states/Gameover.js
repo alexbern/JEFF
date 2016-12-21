@@ -3,6 +3,7 @@ class Gameover{
     this.winner = winner;
   }
   preload(){
+    this.cheer = this.add.audio('cheer');
     this.initScene()
   }
   initScene(){
@@ -14,19 +15,26 @@ class Gameover{
     this.trees.anchor.setTo(0, 1);
     this.track = this.game.add.tileSprite(0, window.innerHeight - 35, window.innerWidth, 225, 'track');
     this.track.anchor.setTo(0, 1);
+    this.cheer.play();
 
     if (this.winner === 'player1') {
-      this.stage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 + 20, 'p1stage');
+      this.stage = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2 + 200, 'p1stage');
+      this.stage.anchor.setTo(0.5, 0.5);
+      this.stage.animations.add('wave');
+      this.stage.animations.play('wave', 5, true);
+
     }else{
-      this.stage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 + 20, 'p1stage');
+      this.stage = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2 + 200, 'p2stage');
+      this.stage.anchor.setTo(0.5, 0.5);
+      this.stage.animations.add('wave');
+      this.stage.animations.play('wave', 5, true);
     }
-
-
-    //this.stage.animations.add('wave');
-    //this.stage.animations.play('wave', 3, true);
 
     this.bush1 = this.game.add.tileSprite(0, window.innerHeight, window.innerWidth, 96, 'bush1');
     this.bush1.anchor.setTo(0, 1);
+
+    this.menuclouds = this.game.add.tileSprite(0, window.innerHeight/2 - 400, window.innerWidth, 301, 'menuclouds');
+    this.menuclouds.autoScroll(-10, 0);
 
     if (this.winner === 'player1') {
       this.tekst = this.game.add.sprite(window.innerWidth/2 - 170, window.innerHeight/2 - 360, 'p1wintype');
@@ -38,23 +46,19 @@ class Gameover{
       this.startText.anchor.setTo(0.5, 0.5);
     }
 
-    this.menuclouds = this.game.add.tileSprite(window.innerWidth/2 - 500, window.innerHeight/2 - 400, 1144, 301, 'menuclouds');
-    this.menuclouds.autoScroll(-10, 0);
-
-    // let counter = 0;
-    //
-    // let interval = setInterval(()=>{
-    //   if (counter < 10) {
-    //     counter++;
-    //   }else{
-    //     console.log('restart the fucking game');
-    //     clearInterval(interval);
-    //     this.game.state.start('Preload');
-    //   }
-    // }, 1000);
 
 
-    //this.game.add.tween(this.startText.scale).to( { x: 1.2, y: 1.2 }, 2000, Phaser.Easing.Linear.NONE, true, 0, 500, true);
+    let counter = 0;
+
+    let interval = setInterval(()=>{
+      if (counter < 10) {
+        counter++;
+      }else{
+        clearInterval(interval);
+        this.game.state.start('Menu');
+      }
+    }, 1000);
+
   }
 }
 

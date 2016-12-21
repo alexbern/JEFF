@@ -18,7 +18,8 @@ class Preload{
     this.load.spritesheet('p2sheet', 'assets/sprites/p2spritesheet.png', 200, 200, 12);
     this.load.spritesheet('p1ballsheet', 'assets/sprites/p1ballspritesheet.png', 132, 300, 2);
     this.load.spritesheet('p2ballsheet', 'assets/sprites/p2ballspritesheet.png', 150, 300, 2);
-    this.load.spritesheet('p1stage', 'assets/sprites/p1stage.png', 400, 400, 3);
+    this.load.spritesheet('p1stage', 'assets/sprites/p1stage.png', 300, 300, 5);
+    this.load.spritesheet('p2stage', 'assets/sprites/p2stage.png', 300, 300, 5);
     this.load.image('track', 'assets/sprites/track.png');
     this.load.image('clouds', 'assets/sprites/clouds.png');
     this.load.image('trees', 'assets/sprites/trees.png');
@@ -69,15 +70,40 @@ class Preload{
 
     this.load.audio('baseball1', 'assets/sounds/baseball1.mp3');
 
+    this.load.audio('demo1', 'assets/sounds/demo1.mp3');
+
+    this.load.audio('backgroundmusic', 'assets/sounds/background.mp3');
+
+    this.load.audio('ready', 'assets/sounds/ready.ogg');
+    this.load.audio('ready2', 'assets/sounds/ready2.wav');
+    this.load.audio('whoosh', 'assets/sounds/whoosh1.mp3');
+    this.load.audio('countdown', 'assets/sounds/countdown.mp3');
+    this.load.audio('minicountdown', 'assets/sounds/minicountdown.mp3');
+    this.load.audio('error', 'assets/sounds/error.wav');
+    this.load.audio('sound2', 'assets/sounds/sound2.wav');
+    this.load.audio('gunshot', 'assets/sounds/gunshot.mp3');
+    this.load.audio('cheer', 'assets/sounds/crowd1.wav');
+
+    this.load.audio('p2e1', 'assets/sounds/super_blauw.mp3');
+    this.load.audio('p1e1', 'assets/sounds/super_geel.mp3');
+    this.load.audio('p2e3', 'assets/sounds/goedbezig_blauw.mp3');
+    this.load.audio('p1e3', 'assets/sounds/goedbezig_geel.mp3');
+    this.load.audio('p2e2', 'assets/sounds/goedzo_blauw.mp3');
+    this.load.audio('p1e2', 'assets/sounds/goedzo_geel.mp3');
+
     boards.on('ready', () => {
       console.log('Boards are ready to use');
       this.onLoadComplete();
     });
 
-
     // this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
   }
   onLoadComplete(){
+    this.backgroundmusic = this.add.audio('backgroundmusic');
+    this.backgroundmusic.loop = true;
+    this.backgroundmusic.volume = 0.4;
+    this.backgroundmusic.play();
+
     this.game.state.start('Menu');
   }
 }
