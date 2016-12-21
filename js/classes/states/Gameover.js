@@ -58,7 +58,7 @@ class Gameover{
       }else{
         console.log('Game restart!');
         clearInterval(interval);
-        this.game.state.start('Preload');
+        this.game.state.start('Menu');
       }
     }, 1000);
 
