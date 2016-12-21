@@ -170,11 +170,19 @@ class Play{
   }
 
   sensorCheck(){
-    if (this.a0.isOn || this.a1.isOn || this.a2.isOn || this.a3.isOn || this.b0.isOn || this.b1.isOn || this.b2.isOn || this.b3.isOn) {
-      return false;
-    }else{
-      return true;
+    if (this.b0.isOn || this.a3.isOn) {
+      return 'footballsensor';
     }
+    if (this.b1.isOn || this.a2.isOn) {
+      return 'basketballsensor';
+    }
+    if (this.b2.isOn || this.a1.isOn) {
+      return 'tennissensor';
+    }
+    if (this.b3.isOn || this.a0.isOn) {
+      return 'baseballsensor';
+    }
+    return false;
   }
 
   keyboardCheck(){
