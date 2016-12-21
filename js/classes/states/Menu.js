@@ -140,8 +140,8 @@ class Menu{
     if (this.counter === 0) {
       this.counter++;
       this.demoplaying = true;
-      this.add.tween(this.player1).to({x: (-1000)}, 1500, "Linear", true);
-      this.add.tween(this.player2).to({x: (-920)}, 1500, "Linear", true);
+      this.add.tween(this.player1).to({x: (-920)}, 1500, "Linear", true);
+      this.add.tween(this.player2).to({x: (-1000)}, 1500, "Linear", true);
       this.add.tween(this.startText).to( { alpha: 0 }, 1500, "Linear", true);
 
       this.trees.autoScroll(-90, 0);

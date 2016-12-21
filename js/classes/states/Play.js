@@ -196,14 +196,14 @@ class Play{
   }
 
   generateQuestion(){
-
     let rndarr = Math.round(Math.random() * (this.soundJSON.sounds.length - 1));
     let sound = this.soundJSON.sounds[rndarr];
-    console.log(sound);
-    this.activeSound = sound.type;
 
+    this.activeSound = sound.type;
     this.player = this.add.audio(sound.name);
+    this.player.loop = true;
     this.player.play();
+    console.log(this.player);
 
     this.speaker = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'speaker');
     this.speaker.anchor.setTo(0.5, 0.5);
