@@ -80,6 +80,13 @@ class Preload{
     this.load.audio('sound2', 'assets/sounds/sound2.wav');
     this.load.audio('gunshot', 'assets/sounds/gunshot.mp3');
 
+    this.load.audio('p2e1', 'assets/sounds/super_blauw.mp3');
+    this.load.audio('p1e1', 'assets/sounds/super_geel.mp3');
+    this.load.audio('p2e3', 'assets/sounds/goedbezig_blauw.mp3');
+    this.load.audio('p1e3', 'assets/sounds/goedbezig_geel.mp3');
+    this.load.audio('p2e2', 'assets/sounds/goedzo_blauw.mp3');
+    this.load.audio('p1e2', 'assets/sounds/goedzo_geel.mp3');
+
     boards.on('ready', () => {
       console.log('Boards are ready to use');
       this.onLoadComplete();
