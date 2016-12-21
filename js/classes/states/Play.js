@@ -203,7 +203,6 @@ class Play{
     this.player = this.add.audio(sound.name);
     this.player.loop = true;
     this.player.play();
-    console.log(this.player);
 
     this.speaker = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'speaker');
     this.speaker.anchor.setTo(0.5, 0.5);

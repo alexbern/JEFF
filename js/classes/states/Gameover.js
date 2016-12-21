@@ -18,14 +18,18 @@ class Gameover{
     this.cheer.play();
 
     if (this.winner === 'player1') {
-      this.stage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 + 20, 'p1stage');
+      this.stage = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2, 'p1stage');
+      this.stage.anchor.setTo(0.5, 0.5);
+      this.stage.scale.setTo(1.5, 1.5);
       this.stage.animations.add('wave');
-      this.stage.animations.play('wave', 3, true);
+      this.stage.animations.play('wave', 5, true);
 
     }else{
-      this.stage = this.game.add.sprite(window.innerWidth/2 - 200, window.innerHeight/2 + 20, 'p1stage');
+      this.stage = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2 + 200, 'p2stage');
+      this.stage.anchor.setTo(0.5, 0.5);
+      this.stage.scale.setTo(1.5, 1.5);
       this.stage.animations.add('wave');
-      this.stage.animations.play('wave', 3, true);
+      this.stage.animations.play('wave', 5, true);
     }
 
     this.bush1 = this.game.add.tileSprite(0, window.innerHeight, window.innerWidth, 96, 'bush1');
