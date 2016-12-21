@@ -1,4 +1,4 @@
-const SensorPoint = require('../../utils/sensorpoint');
+// const SensorPoint = require('../../utils/sensorpoint');
 
 class Play{
   preload(){
@@ -17,7 +17,6 @@ class Play{
     this.p2e3 = this.add.audio('p2e3');
   }
   create(){
-
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     this.game.physics.arcade.gravity.y = 800;
 
@@ -111,56 +110,55 @@ class Play{
   update(){
 
     if (this.sensorcount >= 50) {
-      console.log(this.b2.isOn);
 
-      if (this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
-        this.checkAwnser('football', this.player1);
-      }else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('basketball', this.player1);
-      }
-      else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('tennis', this.player1);
-      }
-      else if(this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('baseball', this.player1);
-      }
-      else if(this.b0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('football', this.player2);
-      }
-      else if(this.b1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('basketball', this.player2);
-      }
-      else if(this.b2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('tennis', this.player2);
-      }
-      else if(this.b3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('baseball', this.player2);
-      }
-
-      //keyboard controls
-      // if (this.key1.isDown && this.enableControls != 0 && this.enableAwnser != 0) {
+      // if (this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
       //   this.checkAwnser('football', this.player1);
-      // }else if(this.key2.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+      // }else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       //   this.checkAwnser('basketball', this.player1);
       // }
-      // else if(this.key3.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+      // else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       //   this.checkAwnser('tennis', this.player1);
       // }
-      // else if(this.key4.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+      // else if(this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       //   this.checkAwnser('baseball', this.player1);
       // }
-      // else if(this.key5.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+      // else if(this.b0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       //   this.checkAwnser('football', this.player2);
       // }
-      // else if(this.key6.isDown&& this.enableControls != 0 && this.enableAwnser != 0){
+      // else if(this.b1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       //   this.checkAwnser('basketball', this.player2);
       // }
-      // else if(this.key7.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+      // else if(this.b2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       //   this.checkAwnser('tennis', this.player2);
       // }
-      // else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+      // else if(this.b3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
       //   this.checkAwnser('baseball', this.player2);
       // }
+
+      //keyboard controls
+      if (this.key1.isDown && this.enableControls != 0 && this.enableAwnser != 0) {
+        this.checkAwnser('football', this.player1);
+      }else if(this.key2.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('basketball', this.player1);
+      }
+      else if(this.key3.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('tennis', this.player1);
+      }
+      else if(this.key4.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('baseball', this.player1);
+      }
+      else if(this.key5.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('football', this.player2);
+      }
+      else if(this.key6.isDown&& this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('basketball', this.player2);
+      }
+      else if(this.key7.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('tennis', this.player2);
+      }
+      else if(this.key8.isDown && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('baseball', this.player2);
+      }
     }else{
       this.sensorcount++;
     }
@@ -295,7 +293,8 @@ class Play{
     if (player === this.player1) {
       //GOEDBEZIG BLAUW
       let pick = p1enc[rnd];
-      this.p1enc[rnd].play();
+      this.encouragementsound = this.game.add.audio(pick);
+      this.encouragementsound.play();
       this.encouragementmsg = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, pick);
       this.encouragementmsg.anchor.setTo(0.5, 0.5);
       this.add.tween(this.encouragementmsg.scale).to({x: 0.9, y:0.9}, 400, "Linear", true, 0, 1000, true);
@@ -304,7 +303,8 @@ class Play{
     if (player === this.player2) {
       //GOEDBEZIG BLAUW
       let pick = p2enc[rnd];
-      this.p2enc[rnd].play();
+      this.encouragementsound = this.game.add.audio(pick);
+      this.encouragementsound.play();
       this.encouragementmsg = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, pick);
       this.encouragementmsg.anchor.setTo(0.5, 0.5);
       this.add.tween(this.encouragementmsg.scale).to({x: 0.9, y:0.9}, 400, "Linear", true, 0, 1000, true);
@@ -359,15 +359,15 @@ class Play{
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
 
-    this.a0 = new SensorPoint('A0', light, 'A');
-    this.a1 = new SensorPoint('A1', light, 'A');
-    this.a2 = new SensorPoint('A2', light, 'A');
-    this.a3 = new SensorPoint('A3', light, 'A');
-
-    this.b0 = new SensorPoint('A0', light, 'B');
-    this.b1 = new SensorPoint('A1', light, 'B');
-    this.b2 = new SensorPoint('A2', light, 'B');
-    this.b3 = new SensorPoint('A3', light, 'B');
+    // this.a0 = new SensorPoint('A0', light, 'A');
+    // this.a1 = new SensorPoint('A1', light, 'A');
+    // this.a2 = new SensorPoint('A2', light, 'A');
+    // this.a3 = new SensorPoint('A3', light, 'A');
+    //
+    // this.b0 = new SensorPoint('A0', light, 'B');
+    // this.b1 = new SensorPoint('A1', light, 'B');
+    // this.b2 = new SensorPoint('A2', light, 'B');
+    // this.b3 = new SensorPoint('A3', light, 'B');
   }
 
   awnserCooldown(){
@@ -375,7 +375,7 @@ class Play{
 
     let cooldown = setInterval(()=>{
 
-      const checksensors = this.sensorCheck();
+      const checksensors = this.keyboardCheck();
 
       if (this.p1score === 10) {
         this.winner(this.player1);

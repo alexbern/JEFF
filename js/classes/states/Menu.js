@@ -1,4 +1,4 @@
-const SensorPoint = require('../../utils/sensorpoint');
+// const SensorPoint = require('../../utils/sensorpoint');
 
 class Menu{
   preload(){
@@ -21,8 +21,8 @@ class Menu{
     this.p1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
     this.p2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
 
-    this.a3 = new SensorPoint('A3', 1015, 'A');
-    this.b0 = new SensorPoint('A0', 1015, 'B');
+    // this.a3 = new SensorPoint('A3', 1015, 'A');
+    // this.b0 = new SensorPoint('A0', 1015, 'B');
 
   }
 
@@ -30,47 +30,10 @@ class Menu{
 
     if (this.secondcount >= 50) {
 
-      if(this.a3.isOn && !this.demoplaying){
-        this.player1.frame = 1;
-        if (this.p1counter === 0) {
-          if (this.b0.isOn) {
-            this.readySound2.play();
-          }else{
-            this.readySound.play();
-          }
-          this.p1counter++;
-        }
-      }else{
-        this.player1.frame = 0;
-        this.p1counter = 0;
-      }
-
-      if(this.b0.isOn && !this.demoplaying){
-        this.player2.frame = 1;
-        if (this.p2counter === 0) {
-          if (this.a3.isOn) {
-            this.readySound2.play();
-          }else{
-            this.readySound.play();
-          }
-          this.p2counter++;
-        }
-      }else{
-        this.player2.frame = 0;
-        this.p2counter = 0;
-      }
-
-      if (this.a3.isOn && this.b0.isOn && !this.demoplaying) {
-        this.initStart();
-      }
-
-
-
-      //KEYBOARD
-      // if(this.p1.isDown && !this.demoplaying){
+      // if(this.a3.isOn && !this.demoplaying){
       //   this.player1.frame = 1;
       //   if (this.p1counter === 0) {
-      //     if (this.p2.isDown) {
+      //     if (this.b0.isOn) {
       //       this.readySound2.play();
       //     }else{
       //       this.readySound.play();
@@ -82,10 +45,10 @@ class Menu{
       //   this.p1counter = 0;
       // }
       //
-      // if(this.p2.isDown && !this.demoplaying){
+      // if(this.b0.isOn && !this.demoplaying){
       //   this.player2.frame = 1;
       //   if (this.p2counter === 0) {
-      //     if (this.p1.isDown) {
+      //     if (this.a3.isOn) {
       //       this.readySound2.play();
       //     }else{
       //       this.readySound.play();
@@ -97,9 +60,46 @@ class Menu{
       //   this.p2counter = 0;
       // }
       //
-      // if (this.p1.isDown && this.p2.isDown && !this.demoplaying) {
+      // if (this.a3.isOn && this.b0.isOn && !this.demoplaying) {
       //   this.initStart();
       // }
+
+
+
+      //KEYBOARD
+      if(this.p1.isDown && !this.demoplaying){
+        this.player1.frame = 1;
+        if (this.p1counter === 0) {
+          if (this.p2.isDown) {
+            this.readySound2.play();
+          }else{
+            this.readySound.play();
+          }
+          this.p1counter++;
+        }
+      }else{
+        this.player1.frame = 0;
+        this.p1counter = 0;
+      }
+
+      if(this.p2.isDown && !this.demoplaying){
+        this.player2.frame = 1;
+        if (this.p2counter === 0) {
+          if (this.p1.isDown) {
+            this.readySound2.play();
+          }else{
+            this.readySound.play();
+          }
+          this.p2counter++;
+        }
+      }else{
+        this.player2.frame = 0;
+        this.p2counter = 0;
+      }
+
+      if (this.p1.isDown && this.p2.isDown && !this.demoplaying) {
+        this.initStart();
+      }
     }else{
       this.secondcount++;
     }

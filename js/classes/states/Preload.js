@@ -6,9 +6,9 @@ const ports = [
   { id: "A", port: "/dev/cu.wchusbserial1420" }
 ];
 
-const five = require('johnny-five');
-const boards = new five.Boards(ports);
-window.jeffApp.boards = boards;
+// const five = require('johnny-five');
+// const boards = new five.Boards(ports);
+// window.jeffApp.boards = boards;
 
 class Preload{
   preload(){
@@ -87,10 +87,12 @@ class Preload{
     this.load.audio('p2e2', 'assets/sounds/goedzo_blauw.mp3');
     this.load.audio('p1e2', 'assets/sounds/goedzo_geel.mp3');
 
-    boards.on('ready', () => {
-      console.log('Boards are ready to use');
-      this.onLoadComplete();
-    });
+    // boards.on('ready', () => {
+    //   console.log('Boards are ready to use');
+    //   this.onLoadComplete();
+    // });
+
+    this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
   }
   onLoadComplete(){
     this.game.state.start('Menu');
