@@ -104,6 +104,7 @@ class Play{
   update(){
 
     if (this.sensorcount >= 50) {
+      console.log(this.b2.isOn);
 
       if (this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
         this.checkAwnser('football', this.player1);
