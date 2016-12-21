@@ -115,8 +115,8 @@ class Menu{
     this.track = this.game.add.tileSprite(0, window.innerHeight - 35, window.innerWidth, 225, 'track');
     this.track.anchor.setTo(0, 1);
 
-    this.player1 = this.game.add.sprite(window.innerWidth/2 - 80, window.innerHeight - 290, 'p1ballsheet');
-    this.player2 = this.game.add.sprite(window.innerWidth/2 + 80, window.innerHeight - 290, 'p2ballsheet');
+    this.player1 = this.game.add.sprite(window.innerWidth/2 + 80, window.innerHeight - 290, 'p1ballsheet');
+    this.player2 = this.game.add.sprite(window.innerWidth/2 - 80, window.innerHeight - 290, 'p2ballsheet');
     this.player1.anchor.setTo(0.5, 0.5);
     this.player2.anchor.setTo(0.5, 0.5);
     this.player1.scale.setTo(1.1, 1.1);
