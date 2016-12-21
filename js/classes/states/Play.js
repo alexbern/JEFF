@@ -8,6 +8,13 @@ class Play{
     this.errorSound = this.add.audio('error');
     this.soundeffect2 = this.add.audio('sound2');
     this.gunshot = this.add.audio('gunshot');
+
+    this.p1e1 = this.add.audio('p1e1');
+    this.p1e2 = this.add.audio('p1e2');
+    this.p1e3 = this.add.audio('p1e3');
+    this.p2e1 = this.add.audio('p2e1');
+    this.p2e2 = this.add.audio('p2e2');
+    this.p2e3 = this.add.audio('p2e3');
   }
   create(){
 
@@ -285,14 +292,18 @@ class Play{
     let rnd = Math.round(Math.random() * (p1enc.length - 1));
 
     if (player === this.player1) {
+      //GOEDBEZIG BLAUW
       let pick = p1enc[rnd];
+      this.p1enc[rnd].play();
       this.encouragementmsg = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, pick);
       this.encouragementmsg.anchor.setTo(0.5, 0.5);
       this.add.tween(this.encouragementmsg.scale).to({x: 0.9, y:0.9}, 400, "Linear", true, 0, 1000, true);
     }
 
     if (player === this.player2) {
+      //GOEDBEZIG BLAUW
       let pick = p2enc[rnd];
+      this.p2enc[rnd].play();
       this.encouragementmsg = this.game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, pick);
       this.encouragementmsg.anchor.setTo(0.5, 0.5);
       this.add.tween(this.encouragementmsg.scale).to({x: 0.9, y:0.9}, 400, "Linear", true, 0, 1000, true);
