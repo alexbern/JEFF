@@ -110,29 +110,29 @@ class Play{
   update(){
 
     if (this.sensorcount >= 50) {
-
+      console.log(this.b3.isOn);
       if (this.a3.isOn && this.enableControls != 0 && this.enableAwnser != 0) {
-        this.checkAwnser('football', this.player1);
-      }else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('basketball', this.player1);
-      }
-      else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('tennis', this.player1);
-      }
-      else if(this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
-        this.checkAwnser('baseball', this.player1);
-      }
-      else if(this.b0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
         this.checkAwnser('football', this.player2);
-      }
-      else if(this.b1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      }else if(this.a2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
         this.checkAwnser('basketball', this.player2);
       }
-      else if(this.b2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      else if(this.a1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
         this.checkAwnser('tennis', this.player2);
       }
-      else if(this.b3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+      else if(this.a0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
         this.checkAwnser('baseball', this.player2);
+      }
+      else if(this.b0.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('football', this.player1);
+      }
+      else if(this.b1.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('basketball', this.player1);
+      }
+      else if(this.b2.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('tennis', this.player1);
+      }
+      else if(this.b3.isOn && this.enableControls != 0 && this.enableAwnser != 0){
+        this.checkAwnser('baseball', this.player1);
       }
 
       //keyboard controls
@@ -358,7 +358,7 @@ class Play{
     this.key7 = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
     this.key8 = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
 
-    this.a0 = new SensorPoint('A0', light, 'A');
+    this.a0 = new SensorPoint('A0', 1000, 'A');
     this.a1 = new SensorPoint('A1', light, 'A');
     this.a2 = new SensorPoint('A2', light, 'A');
     this.a3 = new SensorPoint('A3', light, 'A');
@@ -366,7 +366,7 @@ class Play{
     this.b0 = new SensorPoint('A0', light, 'B');
     this.b1 = new SensorPoint('A1', light, 'B');
     this.b2 = new SensorPoint('A2', light, 'B');
-    this.b3 = new SensorPoint('A3', light, 'B');
+    this.b3 = new SensorPoint('A3', 1000, 'B');
   }
 
   awnserCooldown(){

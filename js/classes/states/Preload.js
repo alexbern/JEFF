@@ -18,8 +18,8 @@ class Preload{
     this.load.spritesheet('p2sheet', 'assets/sprites/p2spritesheet.png', 200, 200, 12);
     this.load.spritesheet('p1ballsheet', 'assets/sprites/p1ballspritesheet.png', 132, 300, 2);
     this.load.spritesheet('p2ballsheet', 'assets/sprites/p2ballspritesheet.png', 150, 300, 2);
-    this.load.spritesheet('p1stage', 'assets/sprites/p1stage.png', 200, 200, 5);
-    this.load.spritesheet('p2stage', 'assets/sprites/p2stage.png', 200, 200, 5);
+    this.load.spritesheet('p1stage', 'assets/sprites/p1stage.png', 300, 300, 5);
+    this.load.spritesheet('p2stage', 'assets/sprites/p2stage.png', 300, 300, 5);
     this.load.image('track', 'assets/sprites/track.png');
     this.load.image('clouds', 'assets/sprites/clouds.png');
     this.load.image('trees', 'assets/sprites/trees.png');

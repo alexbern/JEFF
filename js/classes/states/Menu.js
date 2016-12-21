@@ -28,29 +28,12 @@ class Menu{
 
   update(){
 
-    // console.log(this.a3.isOn);
 
     if (this.secondcount >= 50) {
-
       if(this.a3.isOn && !this.demoplaying){
-        this.player1.frame = 1;
-        if (this.p1counter === 0) {
-          if (this.b0.isOn) {
-            this.readySound2.play();
-          }else{
-            this.readySound.play();
-          }
-          this.p1counter++;
-        }
-      }else{
-        this.player1.frame = 0;
-        this.p1counter = 0;
-      }
-
-      if(this.b0.isOn && !this.demoplaying){
         this.player2.frame = 1;
         if (this.p2counter === 0) {
-          if (this.a3.isOn) {
+          if (this.b0.isOn) {
             this.readySound2.play();
           }else{
             this.readySound.play();
@@ -60,6 +43,21 @@ class Menu{
       }else{
         this.player2.frame = 0;
         this.p2counter = 0;
+      }
+
+      if(this.b0.isOn && !this.demoplaying){
+        this.player1.frame = 1;
+        if (this.p1counter === 0) {
+          if (this.a3.isOn) {
+            this.readySound2.play();
+          }else{
+            this.readySound.play();
+          }
+          this.p1counter++;
+        }
+      }else{
+        this.player1.frame = 0;
+        this.p1counter = 0;
       }
 
       if (this.a3.isOn && this.b0.isOn && !this.demoplaying) {
