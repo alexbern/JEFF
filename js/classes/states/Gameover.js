@@ -28,6 +28,9 @@ class Gameover{
     this.bush1 = this.game.add.tileSprite(0, window.innerHeight, window.innerWidth, 96, 'bush1');
     this.bush1.anchor.setTo(0, 1);
 
+    this.menuclouds = this.game.add.tileSprite(0, window.innerHeight/2 - 400, window.innerWidth, 301, 'menuclouds');
+    this.menuclouds.autoScroll(-10, 0);
+
     if (this.winner === 'player1') {
       this.tekst = this.game.add.sprite(window.innerWidth/2 - 170, window.innerHeight/2 - 360, 'p1wintype');
       this.startText = this.game.add.text(window.innerWidth/2, window.innerHeight/2 - 80, 'De gele speler bleek het best de geluiden te herkennen', { font: '25px Calibri', fill: '#ffffff', align: 'center' });
@@ -38,23 +41,20 @@ class Gameover{
       this.startText.anchor.setTo(0.5, 0.5);
     }
 
-    this.menuclouds = this.game.add.tileSprite(window.innerWidth/2 - 500, window.innerHeight/2 - 400, 1144, 301, 'menuclouds');
-    this.menuclouds.autoScroll(-10, 0);
-
-    // let counter = 0;
-    //
-    // let interval = setInterval(()=>{
-    //   if (counter < 10) {
-    //     counter++;
-    //   }else{
-    //     console.log('restart the fucking game');
-    //     clearInterval(interval);
-    //     this.game.state.start('Preload');
-    //   }
-    // }, 1000);
 
 
-    //this.game.add.tween(this.startText.scale).to( { x: 1.2, y: 1.2 }, 2000, Phaser.Easing.Linear.NONE, true, 0, 500, true);
+    let counter = 0;
+
+    let interval = setInterval(()=>{
+      if (counter < 10) {
+        counter++;
+      }else{
+        console.log('restart the fucking game');
+        clearInterval(interval);
+        this.game.state.start('Preload');
+      }
+    }, 1000);
+
   }
 }
 

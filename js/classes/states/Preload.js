@@ -6,9 +6,9 @@ const ports = [
   { id: "A", port: "/dev/cu.wchusbserial1420" }
 ];
 
-// const five = require('johnny-five');
-// const boards = new five.Boards(ports);
-// window.jeffApp.boards = boards;
+const five = require('johnny-five');
+const boards = new five.Boards(ports);
+window.jeffApp.boards = boards;
 
 class Preload{
   preload(){
@@ -69,6 +69,8 @@ class Preload{
 
     this.load.audio('baseball1', 'assets/sounds/baseball1.mp3');
 
+    this.load.audio('demo1', 'assets/sounds/demo1.mp3');
+
     this.load.audio('ready', 'assets/sounds/ready.ogg');
     this.load.audio('ready2', 'assets/sounds/ready2.wav');
     this.load.audio('whoosh', 'assets/sounds/whoosh1.mp3');
@@ -76,14 +78,12 @@ class Preload{
     this.load.audio('minicountdown', 'assets/sounds/minicountdown.mp3');
     this.load.audio('error', 'assets/sounds/error.wav');
     this.load.audio('sound2', 'assets/sounds/sound2.wav');
+    this.load.audio('gunshot', 'assets/sounds/gunshot.mp3');
 
-    // boards.on('ready', () => {
-    //   console.log('Boards are ready to use');
-    //   this.onLoadComplete();
-    // });
-
-
-    this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+    boards.on('ready', () => {
+      console.log('Boards are ready to use');
+      this.onLoadComplete();
+    });
   }
   onLoadComplete(){
     this.game.state.start('Menu');
