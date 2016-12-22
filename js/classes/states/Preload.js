@@ -101,7 +101,7 @@ class Preload{
   onLoadComplete(){
     this.backgroundmusic = this.add.audio('backgroundmusic');
     this.backgroundmusic.loop = true;
-    this.backgroundmusic.volume = 0.4;
+    this.backgroundmusic.volume = 0.3;
     this.backgroundmusic.play();
 
     this.game.state.start('Menu');

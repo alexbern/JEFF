@@ -457,11 +457,9 @@ class Play{
 
     if (player === this.player1) {
       let winner = 'player1';
-      console.log('Player 1 has won');
       this.game.state.start('Gameover', true, false, winner);
     }else if(player === this.player2){
       let winner = 'player2';
-      console.log('Player 2 has won');
       this.game.state.start('Gameover', true, false, winner);
     }
   }

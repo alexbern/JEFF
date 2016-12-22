@@ -8,7 +8,6 @@ class SensorPoint {
     this.isOn = false;
 
     new five.Sensor({pin: pin, board: boards.byId(boardId)}).on('change', (value) => {
-      console.log(value);
       if (value > threshold){
         this.isOn = false;
       }else{

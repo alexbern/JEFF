@@ -9,7 +9,6 @@
     "rebuild": "electron-rebuild",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds"
   },
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexbern/JEFF.git"
@@ -26,9 +25,11 @@
   "homepage": "https://github.com/alexbern/JEFF#readme",
   "dependencies": {
     "electron": "^1.4.10",
+    "electron-packager": "^8.4.0",
+    "es6-promise": "^4.0.5",
     "johnny-five": "^0.10.6",
-    "whatwg-fetch": "^2.0.1",
-    "electron-packager": "^8.4.0"
+    "isomorphic-fetch": "^2.2.1",
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",

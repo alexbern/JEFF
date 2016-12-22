@@ -40,12 +40,22 @@ class Menu{
           this.p2counter++;
         }
       }else{
-        this.player2.frame = 0;
         this.p2counter = 0;
       }
 
-      if(this.b0.isOn && !this.demoplaying){
+      if (this.a3.isOn) {
+        this.player2.frame = 1;
+      }else{
+        this.player2.frame = 0;
+      }
+
+      if (this.b0.isOn) {
         this.player1.frame = 1;
+      }else{
+        this.player1.frame = 0;
+      }
+
+      if(this.b0.isOn && !this.demoplaying){
         if (this.p1counter === 0) {
           if (this.a3.isOn) {
             this.readySound2.play();
@@ -55,7 +65,6 @@ class Menu{
           this.p1counter++;
         }
       }else{
-        this.player1.frame = 0;
         this.p1counter = 0;
       }
 
